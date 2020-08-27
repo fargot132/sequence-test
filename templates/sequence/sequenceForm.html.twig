@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h3>Wprowadź dane do obliczeń</h3>
+        <p>Liczby całkowite z zakresu od 1 do 99 999, do wyliczenia wartości maksymalnej z ciągu. Maksymalnie 10 próbek.</p>
+        <div class="col-md-6">
+            {{ form(form) }}
+            <button type="button" class="btn-default btn" onclick="location.href ='{{ path('homepage') }}';">Kasuj</button>
+        </div>
+        
+    </div>
+{% endblock %}

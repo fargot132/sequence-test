@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="page-header">
+            <h1>Wynik działania</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+        <table class="table table-bordered">
+            <tr>
+                <th>INPUT</th>
+                <th>OUTPUT</th>
+            </tr>    
+        {% for result in results  %}
+            <tr>
+                <td>{{ result.0 }}</td>
+                <td>{{ result.1 }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+        </div>
+        </div>
+        <button type="button" class="btn-default btn" onclick="location.href ='{{ path('homepage') }}';">Powrót</button>
+    </div>
+
+{% endblock %}
