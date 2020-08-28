@@ -7,7 +7,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use App\Validator\Constraints\SequenceTextarea;
 
 class SequenceFormType extends AbstractType
 {
@@ -22,7 +21,6 @@ class SequenceFormType extends AbstractType
                     new NotBlank([
                         'message' => 'Nic nie wprowadzono'
                     ]),
-                    new SequenceTextarea(),
                   ]
                 ])
             ->add('Oblicz', SubmitType::class)

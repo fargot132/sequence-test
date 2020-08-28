@@ -8,7 +8,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 use App\Entity\SequenceCalc;
-use \App\Validator\Constraints\SequenceTextareaValidator;
+use App\Entity\InputData;
+use Symfony\Component\Validator\Validation;
 
 
 class SequenceCalcCommand extends Command
@@ -33,7 +34,6 @@ class SequenceCalcCommand extends Command
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        
         $filename = $input->getArgument('filename');
         if ($filename !== null) {
             if (file_exists($filename)) {
@@ -45,24 +45,26 @@ class SequenceCalcCommand extends Command
         } else {
             $text = stream_get_contents(STDIN, 1024);
         }
+                
+        $inputData = new InputData();
+        $inputData->setText($text);
         
-        $text = trim($text);
-        
-        if (count(explode("\n", $text)) > 10) {
-            $output->writeln("Wprowadzono więcej niż 10 wierszy.");
+        $validator = Validation::createValidatorBuilder()
+            ->addMethodMapping('loadValidatorMetadata')
+            ->getValidator();
+        $violations = $validator->validate($inputData);
+        if (0 !== \count($violations)) {
+            foreach ($violations as $violation) {
+                $output->writeln($violation->getMessage());
+            }
             return 1;
         }
         
-        $seq = new SequenceCalc(new SequenceTextareaValidator());
-        $seq->setText($text);
-        if ($seq->processText() === false) {
-            $output->writeln("Wprowadzono więcej niż 10 wierszy.");
-            return 1;
-        }
-     
+        $seq = new SequenceCalc($inputData);
+        $seq->processData();
         $table = new Table($output);
         $table->setHeaders(['INPUT', 'OUTPUT']);
-        $table->setRows($seq->getTable());
+        $table->setRows($seq->getResult());
         $table->render();
 
         return 0;

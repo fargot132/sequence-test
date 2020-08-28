@@ -9,6 +9,7 @@ Sequence is a(0), a(1), ..., a(n)
 n range is (1<= n =< 99 999)
 Max number of cases is 10.
 
-Data input from form, stdin or as parameter.
+Data input from form, stdin or as command parameter.
 
-type tests\test_file.txt | php bin\console app:sequence-calc
+cat tests/test_file.txt | php bin/console app:sequence-calc
+php bin/console app:sequence-calc tests/test_file.txt

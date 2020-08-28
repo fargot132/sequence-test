@@ -2,14 +2,12 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\SequenceFormType;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\SequenceCalc;
 use App\Entity\InputData;
-use App\Validator\Constraints\SequenceTextareaValidator;
 
 class SeriesController extends AbstractController
 {

@@ -7,7 +7,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @Annotation
  */
-class SequenceTextarea extends Constraint
+class NoOfSamples extends Constraint
 {
-    public $message = 'Wprowadzono więcej niż 10 wierszy';
+    public $message = 'Wprowadzono więcej niż 10 próbek';
 }
