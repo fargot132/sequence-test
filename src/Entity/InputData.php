@@ -25,12 +25,12 @@ class InputData
         }
     }
     
-    public function getText() : string
+    public function getText(): string
     {
         return $this->text;
     }
 
-    public function getData() : array
+    public function getData(): array
     {
         return $this->data;
     }
@@ -56,5 +56,4 @@ class InputData
     {
         $metadata->addPropertyConstraint('data', new NoOfSamples());
     }
-    
 }

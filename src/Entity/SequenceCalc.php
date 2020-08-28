@@ -7,7 +7,7 @@ use App\Entity\InputData;
 class SequenceCalc
 {
     // sequence array
-    protected $sequence;    
+    protected $sequence;
     // output table
     protected $table;
     // max n of sequence

@@ -11,7 +11,6 @@ use App\Entity\SequenceCalc;
 use App\Entity\InputData;
 use Symfony\Component\Validator\Validation;
 
-
 class SequenceCalcCommand extends Command
 {
     protected static $defaultName = 'app:sequence-calc';
